@@ -1,0 +1,21 @@
+header {
+    width: 375px;
+    height: 80px;
+    background-color: #ffffff;
+}
+
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-uol {
+    width: 75px;
+    height: 53px;
+}
+
+.icon {
+    width: 42.19px;
+    height: 30.94px;
+}
