@@ -1,0 +1,1 @@
+let nomeUsuario = prompt("Bem-vindo! Qual é seu nome?");
