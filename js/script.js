@@ -15,20 +15,23 @@ function criaUsuario() {
 function acompanhaStatus() {
     setInterval(() => {
         axios.post('https://mock-api.driven.com.br/api/v6/uol/status', { name: nomeUsuario }).then((resposta) => {
-            console.log(resposta);
+            renderizaChat();
         });
     }, 5000);
 }
 
 function renderizaChat() {
-
     let chatHTML = '';
-    salaChat.innerHTML = '';
     
-    chat.forEach((message) => {
-        chatHTML += montaMensagem(message);
+    axios.get('https://mock-api.driven.com.br/api/v6/uol/messages').then((resposta) => {
+        console.log(resposta);
+        chat = resposta.data;
+
+        chat.forEach((message) => {
+            chatHTML += montaMensagem(message);
+        });
+        salaChat.innerHTML = chatHTML;
     });
-    salaChat.innerHTML = chatHTML;
 }
 
 function montaMensagem(message) {
