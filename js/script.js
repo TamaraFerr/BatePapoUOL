@@ -73,5 +73,6 @@ function enviaMensagem() {
     axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', mensagem).then((resposta) => {
         console.log(resposta);
         input.value = '';
-    })
+        renderizaChat();
+    });
 }
