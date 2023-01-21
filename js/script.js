@@ -1,27 +1,6 @@
 let nomeUsuario;
-let chat = [
-	{
-		from: "João",
-		to: "Todos",
-		text: "entra na sala...",
-		type: "status",
-		time: "08:01:17"
-	},
-	{
-		from: "João",
-		to: "Todos",
-		text: "Bom dia",
-		type: "message",
-		time: "08:02:50"
-	},
-    {
-		from: "João",
-		to: "Todos",
-		text: "Bom dia",
-		type: "private_message",
-		time: "08:02:50"
-	},
-]
+let chat = [];
+
 const salaChat = document.getElementById('chat');
 
 criaUsuario()
@@ -29,11 +8,20 @@ criaUsuario()
 function criaUsuario() {
     nomeUsuario = prompt("Bem-vindo! Qual é seu nome?");
     axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', { name: nomeUsuario }).then((resposta) => {
-        renderizaChat();
+        acompanhaStatus();
     });
 }
 
+function acompanhaStatus() {
+    setInterval(() => {
+        axios.post('https://mock-api.driven.com.br/api/v6/uol/status', { name: nomeUsuario }).then((resposta) => {
+            console.log(resposta);
+        });
+    }, 5000);
+}
+
 function renderizaChat() {
+
     let chatHTML = '';
     salaChat.innerHTML = '';
     
