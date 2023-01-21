@@ -19,14 +19,20 @@
             <ion-icon name="people" class="icon"></ion-icon>
         </div>
     </header>
-    <main></main>
+    <main>
+        <ul id="chat">
+        </ul>
+    </main>
     <footer>
         <div class="rodape">
             <input type="text" placeholder="Escreva aqui..." data-test="input-message" class="mensagem">
-            <ion-icon name="paper-plane-outline" class="envia" data-test="send-message"></ion-icon>
+            <button onclick="enviaMensagem()">
+                <ion-icon name="paper-plane-outline" class="envia" data-test="send-message"></ion-icon>
+            </button>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="./js/script.js"></script>
 </body>

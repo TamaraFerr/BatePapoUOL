@@ -28,6 +28,10 @@ body {
     padding-top: 5px;
 }
 
+main {
+    padding-top: 80px;
+}
+
 footer {
     background-color: #ffffff;
     position: fixed;
@@ -56,7 +60,40 @@ input {
     font-style: italic;
 }
 
+button {
+    margin-right: 18px;
+    border: none;
+    background-color: #ffffff;
+}
+
 .envia {
     font-size: 30px;
-    padding-right: 18px;
+}
+
+.default-message {
+    width: 375px;
+    font-family: 'roboto', sans-serif;
+    font-size: 14px;
+    padding: 12px 8px;  
+    box-sizing: border-box;
+}
+
+.default-message.private_message {
+    background-color: #FFDEDE;
+}
+
+.default-message.status {
+    background-color: #DCDCDC;
+}
+
+.default-message.message {
+    background-color: #ffffff;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.hour {
+    color: #AAAAAA;;
 }
