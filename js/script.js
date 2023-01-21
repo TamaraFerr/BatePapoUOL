@@ -15,16 +15,19 @@ function criaUsuario() {
 function acompanhaStatus() {
     setInterval(() => {
         axios.post('https://mock-api.driven.com.br/api/v6/uol/status', { name: nomeUsuario }).then((resposta) => {
-            renderizaChat();
         });
-    }, 5000);
+    }, 5000); 
+    atualizaChat();
+}
+
+function atualizaChat() {
+    setInterval(renderizaChat, 3000);
 }
 
 function renderizaChat() {
     let chatHTML = '';
     
     axios.get('https://mock-api.driven.com.br/api/v6/uol/messages').then((resposta) => {
-        console.log(resposta);
         chat = resposta.data;
 
         chat.forEach((message) => {
@@ -54,4 +57,18 @@ function montaMensagem(message) {
                         <span> ${message.text}</span>
                     </li>`;
     }
+}
+
+function enviaMensagem() {
+    let input = document.getElementById("mensagem");
+    let mensagem = {
+        from: nomeUsuario,
+        to: "Todos",
+        text: input.value,
+        type: "message"
+    }
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', mensagem).then((resposta) => {
+        console.log(resposta);
+        input.value = '';
+    })
 }
