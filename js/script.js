@@ -37,18 +37,18 @@ function renderizaChat() {
 function montaMensagem(message) {
     switch(message.type){
         case "status":
-            return `<li class="default-message status">
+            return `<li class="default-message status" data-test="message">
                         <span class="hour">(${message.time})</span>
                         <span><strong>${message.from}</strong> ${message.text}</span>
                     </li>`;
         case "private_message":
-            return `<li class="default-message private_message">
+            return `<li class="default-message private_message" data-test="message">
                         <span class="hour">(${message.time})</span>
                         <span><strong>${message.from}</strong> reservadamente para <strong>${message.to}</strong>:</span>
                         <span> ${message.text}</span>
                     </li>`;
         default: 
-            return `<li class="default-message message">
+            return `<li class="default-message message" data-test="message">
                         <span class="hour">(${message.time})</span>
                         <span><strong>${message.from}</strong> para <strong>${message.to}</strong>:</span>
                         <span> ${message.text}</span>
