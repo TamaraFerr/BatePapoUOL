@@ -52,7 +52,7 @@ function montaMensagem(message) {
                             <span> ${message.text}</span>
                         </li>`;
             }
-            break;
+            return "";
         default: 
             return `<li class="default-message message" data-test="message">
                         <span class="hour">(${message.time})</span>
@@ -70,9 +70,13 @@ function enviaMensagem() {
         text: input.value,
         type: "message"
     }
+    if(!mensagem.text) return;
     axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', mensagem).then((resposta) => {
         console.log(resposta);
         input.value = '';
         renderizaChat();
+    }).catch((erro) => {
+        console.log(`erro: ${erro}`);
+        window.location.reload();
     });
 }
