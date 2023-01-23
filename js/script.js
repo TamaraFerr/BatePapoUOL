@@ -2,6 +2,7 @@ let nomeUsuario;
 let chat = [];
 const salaChat = document.getElementById('chat');
 
+
 criaUsuario();
 
 function criaUsuario() {
@@ -29,6 +30,7 @@ function renderizaChat() {
             chatHTML += montaMensagem(message);
         });
         salaChat.innerHTML = chatHTML;
+        salaChat.scrollIntoView(false);
     });
 }
 
