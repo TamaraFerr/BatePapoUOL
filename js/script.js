@@ -1,9 +1,8 @@
 let nomeUsuario;
 let chat = [];
-
 const salaChat = document.getElementById('chat');
 
-criaUsuario()
+criaUsuario();
 
 function criaUsuario() {
     nomeUsuario = prompt("Bem-vindo! Qual é seu nome?");
@@ -16,12 +15,8 @@ function acompanhaStatus() {
     setInterval(() => {
         axios.post('https://mock-api.driven.com.br/api/v6/uol/status', { name: nomeUsuario }).then((resposta) => {
         });
-    }, 5000); 
+    }, 5000);
     atualizaChat();
-}
-
-function atualizaChat() {
-    setInterval(renderizaChat, 3000);
 }
 
 function renderizaChat() {
@@ -35,6 +30,10 @@ function renderizaChat() {
         });
         salaChat.innerHTML = chatHTML;
     });
+}
+
+function atualizaChat() {
+    setInterval(renderizaChat, 3000);
 }
 
 function montaMensagem(message) {
@@ -64,7 +63,7 @@ function montaMensagem(message) {
 
 function enviaMensagem() {
     let input = document.getElementById("mensagem");
-    let mensagem = {
+    const mensagem = {
         from: nomeUsuario,
         to: "Todos",
         text: input.value,
